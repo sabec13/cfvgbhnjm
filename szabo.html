@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vincková stránka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    .logo {
+      font-size: 1.5em;
+    }
+    .menu-button, .search-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    nav {
+      display: none;
+      flex-direction: column;
+      background: #444;
+      padding: 10px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    nav.active {
+      display: flex;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+    .search-box {
+      display: none;
+      position: relative;
+    }
+    .search-box.active {
+      display: flex;
+      align-items: center;
+    }
+    .search-box input {
+      flex-grow: 1;
+      padding: 5px;
+    }
+    .close-search {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .content {
+      display: flex;
+      margin: 20px;
+    }
+    .content img {
+      width: 200px;
+      height: auto;
+      margin-right: 20px;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    @media (min-width: 800px) {
+      nav {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        background: none;
+        width: auto;
+      }
+      nav a {
+        display: inline;
+      }
+      .menu-button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">Vincková stránka</div>
+  <button class="menu-button" onclick="toggleMenu()">☰</button>
+  <nav id="nav">
+    <a href="https://www.google.com">Google</a>
+    <a href="https://www.facebook.com">Facebook</a>
+    <a href="https://www.youtube.com">YouTube</a>
+  </nav>
+  <div class="search-box" id="searchBox">
+    <input type="text" placeholder="Hľadať...">
+    <button class="close-search" id="closeSearch" onclick="toggleSearch()">X</button>
+  </div>
+  <button class="search-button" id="searchButton" onclick="toggleSearch()">🔍</button>
+</header>
+<section class="content">
+  <img src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.15752-9/479470418_2131965967263679_8356679525296187978_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0024fc&_nc_ohc=2xrHwuekLOEQ7kNvgHO13cu&_nc_oc=AdhZC6yQYXcYGL5E4RMFOguEiVYl8Gr4nM5I2UIPzF2RthNpQGfxjSMPcIIw_4In_ao&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.xx&oh=03_Q7cD1gFWPIJLOhkC20CzH8bpzC4umeompx-nHcLcGQM4fIb4PA&oe=67DF1456" alt="Ilustračný obrázok">
+  <article>
+    <h2>Vincko</h2>
+    <p>Vincko bol človek, ktorý svojím odhodlaním a pracovitosťou inšpiroval mnohých ľudí vo svojom okolí. Vždy sa snažil ísť za svojimi cieľmi a nevzdával sa ani v ťažkých chvíľach. Jeho vytrvalosť a ochota pomáhať iným ho robili výnimočným. Priatelia si ho vážili nielen pre jeho schopnosti, ale aj pre jeho srdečnosť a čestnosť.</p>
+    <p>V živote sa stretol s mnohými výzvami, no vždy ich dokázal prekonať svojím rozvahou a inteligenciou. Či už išlo o prácu, vzdelanie alebo osobný život, Vinco sa nikdy neuspokojil s priemerom, ale vždy hľadal spôsoby, ako sa zlepšiť. Jeho príbeh je dôkazom toho, že ak človek vytrvá a verí v seba, môže dosiahnuť veľké veci.</p>
+  </article>
+</section>
+<footer>
+  &copy; 2025 Vincko Hruška
+</footer>
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('nav');
+    const menuButton = document.querySelector('.menu-button');
+    if (nav.classList.contains('active')) {
+      nav.classList.remove('active');
+      menuButton.textContent = '☰';
+    } else {
+      nav.classList.add('active');
+      menuButton.textContent = '✖';
+    }
+  }
+  function toggleSearch() {
+    const searchBox = document.getElementById('searchBox');
+    const searchButton = document.getElementById('searchButton');
+    searchBox.classList.toggle('active');
+    searchButton.style.display = searchBox.classList.contains('active') ? 'none' : 'block';
+  }
+</script>
+</body>
+</html>
